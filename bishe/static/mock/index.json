@@ -1,0 +1,43 @@
+{
+    "pic": [{
+        "id": "001",
+        "src": "http://img5.imgtn.bdimg.com/it/u=2695721188,1525116433&fm=26&gp=0.jpg",
+        "desc": "习大大1",
+        "url": "https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%93%88%E5%A3%AB%E5%A5%87&step_word=&hs=0&pn=11&spn=0&di=68420&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3960053082%2C2550490345&os=3755958612%2C792225161&simid=3351171699%2C139520393&adpicid=0&lpn=0&ln=967&fr=&fmq=1575940293179_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F318%2Fw640h478%2F20180430%2Fdce3-fzvpatr5863804.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fh_z%26e3Bftgw_z%26e3Bv54_z%26e3BvgAzdH3Fw6ptvsj_m98n0cddln_80j9w80jcaa8aamlj3_z%26e3Bip4s&gsm=&rpstart=0&rpnum=0&islist=&querylist=&force=undefined"
+    }, {
+        "id": "002",
+        "src": "http://img0.imgtn.bdimg.com/it/u=427809846,2671786902&fm=26&gp=0.jpg",
+        "desc": "习大大2"
+    }, {
+        "id": "003",
+        "src": "http://img2.imgtn.bdimg.com/it/u=2835628659,1523180997&fm=26&gp=0.jpg",
+        "desc": "习大大3"
+    }],
+    "wenzhang": [{
+        "id": "01",
+        "desc": "《北京科技大学天津学院》",
+        "url": "https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%93%88%E5%A3%AB%E5%A5%87&step_word=&hs=0&pn=11&spn=0&di=68420&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&istype=0&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3960053082%2C2550490345&os=3755958612%2C792225161&simid=3351171699%2C139520393&adpicid=0&lpn=0&ln=967&fr=&fmq=1575940293179_R&fm=&ic=undefined&s=undefined&hd=undefined&latest=undefined&copyright=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&ist=&jit=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F318%2Fw640h478%2F20180430%2Fdce3-fzvpatr5863804.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fh_z%26e3Bftgw_z%26e3Bv54_z%26e3BvgAzdH3Fw6ptvsj_m98n0cddln_80j9w80jcaa8aamlj3_z%26e3Bip4s&gsm=&rpstart=0&rpnum=0&islist=&querylist=&force=undefined"
+    }, {
+        "id": "02",
+        "desc": "《信息工程学院》"
+    }, {
+        "id": "03",
+        "desc": "《有关信息工程学院放假通知》",
+        "ulr": "http://img0.imgtn.bdimg.com/it/u=427809846,2671786902&fm=26&gp=0.jpg",
+    }, {
+        "id": "04",
+        "desc": "《诚信考试》"
+    }, {
+        "id": "05",
+        "desc": "《谨防电信诈骗》"
+    }, {
+        "id": "06",
+        "desc": "《四六级考试通知》"
+    }, {
+        "id": "07",
+        "desc": "《夜不归宿查处办法》"
+    }, {
+        "id": "08",
+        "desc": "《上课规范》"
+    }]
+}

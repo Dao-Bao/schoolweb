@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>addteachers</title>
+  <script src="https://www.layuicdn.com/layui/layui.js"></script>
+</head>
+<body>
+  <form class="layui-form" action="/addteachers">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">教师姓名：</label>
+      <div class="layui-input-block">
+        <input type="text" name="teachername" required  lay-verify="required" placeholder="请输入教师姓名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">性别：</label>
+      <div class="layui-input-block">
+        <input type="radio" name="teachersex" value="男" title="男" checked>
+        <input type="radio" name="teachersex" value="女" title="女">
+      </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">描述：</label>
+      <div class="layui-input-block">
+        <textarea name="teacherdesc" placeholder="请输入教师详细信息" class="layui-textarea"></textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  //Demo
+  layui.use('form', function(){
+    var form = layui.form;
+    
+    //监听提交
+    form.on('submit(formDemo)', function(data){
+    $.ajax({
+      method:"POST",
+      url: "/addteachers",
+      data: data.field,
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      }
+    })
+      return false;
+    });
+  });
+  </script>
+</html>
