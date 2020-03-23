@@ -1,4 +1,4 @@
-const news = require("../db/regulations");
+const regulations = require("../db/regulations");
 
 module.exports = (req, res) => {
 
@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   // console.log(data);
 
   /**增加数据 */
-  news
+  regulations
   .create({
     regulationstitle: data.regulationstitle,
     regulationsurl: data.regulationsurl,

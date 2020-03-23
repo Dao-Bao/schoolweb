@@ -11,17 +11,14 @@ import Jyjx from '@/view/jiaoyujiaoxue/index'
 import LoginSuccess from '@/view/loginsuccess/index'
 import AddNews from '@/view/addnews/index'
 import AddRegulations from '@/view/addregulations/index'
+import AddSchoolculture from '@/view/addschoolculture/index'
+import AddTeachers from '@/view/addteachers/index'
+import test from '@/view/test'
 
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        // {
-        //   path: '/',
-        //   name: 'HelloWorld',
-        //   component: HelloWorld
-        // },
-        {
+    routes: [{
             path: '/',
             name: 'Shouye',
             component: Shouye,
@@ -61,14 +58,29 @@ export default new Router({
             path: '/addnews',
             name: 'AddNews',
             component: AddNews,
-        }, {
-            path: '/addnews',
-            name: 'AddNews',
-            component: AddNews,
-        }, {
+        },
+        //  {
+        //     path: '/addnews',
+        //     name: 'AddNews',
+        //     component: AddNews,
+        // }, 
+        {
             path: '/addregulations',
             name: 'AddRegulations',
             component: AddRegulations
-        }
+        }, {
+            path: '/addschoolculture',
+            name: 'AddSchoolculture',
+            component: AddSchoolculture
+        }, {
+            path: '/addteachers',
+            name: 'AddTeachers',
+            component: AddTeachers
+        },
+        {
+            path: '/test/:id',
+            name: 'test',
+            component: test
+          },
     ]
 })

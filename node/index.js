@@ -49,11 +49,13 @@ app.use(cors()); /**解决跨域 */
 
 
 /**路由监听 */
-// app.get("/news", require("./router/news")); /**学院新闻接口 */
 app.post("/addnews",require("./router/addnews"));/**上传新闻接口 */
 app.post("/addteachers", require("./router/addteachers"));/**上传师资力量接口 */
 app.post("/addregulations", require("./router/addregulations")); /**上传通知接口 */
 app.post("/addschoolculture", require("./router/addschoolculture"));/**上传校园文化接口 */
 app.post("/adduser", require("./router/adduser"));/**新增校园oa用户 */
-// app.get("/login", require("./router/login"));/**登陆接口 */
-app.post("/login", require('./router/login'));
+app.post("/login", require('./router/login')); /** 登陆验证 */
+app.get("/findnews", require('./router/findnews')); /** 发送学院新闻接口 */
+app.get("/findregulations", require('./router/findregulations')); /** 发送学院通知接口 */
+app.get("/findschoolculture", require('./router/findschoolculture')); /** 发送学院文化接口 */
+app.get("/findteachers", require('./router/findteachers')); /** 师资力量发送接口 */

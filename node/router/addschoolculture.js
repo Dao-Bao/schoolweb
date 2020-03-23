@@ -1,4 +1,4 @@
-const news = require("../db/schoolculture");
+const schoolculture = require("../db/schoolculture");
 
 module.exports = (req, res) => {
 
@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   // console.log(data);
 
   /**增加数据 */
-  news
+  schoolculture
   .create({
     schoolcultureimgsrc: data.schoolcultureimgsrc,
     schoolculturedesc: data.schoolculturedesc,
@@ -17,6 +17,7 @@ module.exports = (req, res) => {
         code: 0,
         message: "提交成功"
       });
+      console.log(data);
     }
   )
   .catch(

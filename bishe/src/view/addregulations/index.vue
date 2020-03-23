@@ -13,7 +13,7 @@
 
 				<el-form-item>
 					<el-button type="primary" @click="onSubmit">上传</el-button>
-					<el-button>取消</el-button>
+					<el-button @click="goBack">取消</el-button>
 				</el-form-item>
 		</el-form>
 
@@ -40,6 +40,9 @@ export default {
 		bottom
   },
   methods: {
+		goBack() {
+			this.$router.push({path: "/loginsuccess"});
+		},
 		onSubmit() {
 			this.$axios({
 				method: "post",

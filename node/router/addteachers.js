@@ -1,4 +1,4 @@
-const news = require("../db/teachers");
+const teachers = require("../db/teachers");
 
 module.exports = (req, res) => {
 
@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   // console.log(data);
 
   /**增加数据 */
-  news
+  teachers
   .create({
     teachername: data.teachername,
     teachersex: data.teachersex,
@@ -18,6 +18,7 @@ module.exports = (req, res) => {
         code: 0,
         message: "提交成功"
       });
+      console.log(data)
     }
   )
   .catch(
