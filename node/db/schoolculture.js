@@ -26,8 +26,8 @@ let Schema = mongoose.Schema;
 /**表规则 */
 let schoolcultureSchema = new Schema({
   /**news表规则 */
-  schoolcultureimgsrc: {type:String, require:true},
-  schoolculturedesc: {type:String, require:true},
+  fieldSingleFile: {type:String, require:true},
+  fieldArrayFile: {type:String, require:true},
 });
 
 /**建表 */

@@ -1,9 +1,12 @@
 const express = require("express");  /**引入express框架 */
 const path = require("path");
-const session = require("express-session"); /** */
-const mongoSession = require("connect-mongo");/** */
+// const session = require("express-session");
+// const mongoSession = require("connect-mongo");
 const http = require("http");/**引入http模块 */
 const cors = require("cors");
+
+// const router = express.Router();
+// const upload = require("./db/upload");
 
 
 let app = express();   
@@ -55,6 +58,8 @@ app.post("/addregulations", require("./router/addregulations")); /**上传通知
 app.post("/addschoolculture", require("./router/addschoolculture"));/**上传校园文化接口 */
 app.post("/adduser", require("./router/adduser"));/**新增校园oa用户 */
 app.post("/login", require('./router/login')); /** 登陆验证 */
+app.post("/upload", require('./router/upload'));  /**上传接口 */
+
 app.get("/findnews", require('./router/findnews')); /** 发送学院新闻接口 */
 app.get("/findregulations", require('./router/findregulations')); /** 发送学院通知接口 */
 app.get("/findschoolculture", require('./router/findschoolculture')); /** 发送学院文化接口 */

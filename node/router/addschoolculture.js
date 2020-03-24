@@ -8,8 +8,10 @@ module.exports = (req, res) => {
   /**增加数据 */
   schoolculture
   .create({
-    schoolcultureimgsrc: data.schoolcultureimgsrc,
-    schoolculturedesc: data.schoolculturedesc,
+    // schoolcultureimgsrc: data.schoolcultureimgsrc,
+    // schoolculturedesc: data.schoolculturedesc,
+    fieldSingleFile: data.fieldSingleFile,
+    fieldArrayFile: data.fieldArrayFile
   })
   .then(
     (data) => {

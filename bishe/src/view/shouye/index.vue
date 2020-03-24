@@ -152,7 +152,7 @@ export default {
 				.then(this.getSchoolCultureSucc)
 			},
 			getSchoolCultureSucc (res) {
-				console.log(res.data);
+				// console.log(res.data);
 				this.xyxw = res.data;
 			}
 		},
