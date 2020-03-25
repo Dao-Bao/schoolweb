@@ -28,7 +28,8 @@ let teachersSchema = new Schema({
   /**news表规则 */
   teachername: {type:String, require:true},
   teachersex: {type:String, require:true},
-  teacherdesc: {type:String, require:true}
+  teacherdesc: {type:String, require:true},
+  teacherheadersrc: {type:String, require:true}
 });
 
 /**建表 */

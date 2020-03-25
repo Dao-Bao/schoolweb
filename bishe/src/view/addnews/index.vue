@@ -2,8 +2,8 @@
   <div>
     <top></top><br/>
 
-			<div class="addnewsright">
-				<el-form ref="form" :model="form" label-width="120px" class="addnews">
+			<div class="addnews">
+				<el-form ref="form" :model="form" label-width="120px" class="news">
 						<el-form-item label="新闻标题">
 							<el-input v-model="form.newstitle"></el-input>
 						</el-form-item>
@@ -18,7 +18,7 @@
 
 						<el-form-item>
 							<el-button type="primary" @click="onSubmit">上传</el-button>
-							<el-button @click="goBack">取消</el-button>
+							<el-button @click="goBack" class="btnr">取消</el-button>
 						</el-form-item>
 				</el-form>
 			</div>
@@ -73,19 +73,17 @@ export default {
 }
 </script>
 
-<style>
-/* .addnewsleft {
-	/* float: left; */
-	/* display: inline; */
-/* } */  
-.addnewsright {
-	/* display: inline; */
-	margin: 20%;
-	/* text-align: center; */
-	/* background-color: blueviolet; */
-}
+<style scoped>
 .addnews {
 	width: 60%;
-	/* float: right; */
+	margin: 0 auto;
+	padding: 8%;
+}
+.news {
+	width: 60%;
+	margin: 0 auto;
+}
+.btnr {
+	float: right;
 }
 </style>

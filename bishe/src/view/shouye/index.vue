@@ -3,7 +3,7 @@
 				<top></top>
 				<el-main>
 					<el-menu class="el-menu-demo" mode="horizontal">
-							<el-menu-item v-for="(item,index) of menuConfig"  class="first" :key="index">
+							<el-menu-item v-for="item of menuConfig"  class="first" :key="item.id">
 								<router-link :to="item.url">{{item.title}}</router-link>
 							</el-menu-item>
 					</el-menu>
@@ -48,7 +48,7 @@
 										<el-carousel height="230px">
 											<el-carousel-item v-for="item in pic" :key="item.id">
 												<span class="picdesc">{{item.newstitle}}</span>
-												<img class="lunbopic" :src="item.newsimgsrc" >
+												<img class="lunbopic" :src="item.newsimgsrc" @click="jump(item)">
 											</el-carousel-item>
 										</el-carousel>
 									</div>
@@ -56,8 +56,8 @@
 									<div class="neirongright">
 										<vue-seamless-scroll :data="wenzhang" class="seamless-warp">
 											<ul class="item">
-												<li v-for="item in wenzhang" :key="item.id">
-													<span class="wenzhangtitle" @click="test(item)">{{item.regulationstitle}}</span>
+												<li v-for="item in wenzhang" :key="item.id" @click="test(item)">
+													<span class="wenzhangtitle" >{{item.regulationsname}}</span>
 												</li>
 											</ul>
 										</vue-seamless-scroll>
@@ -70,13 +70,11 @@
 
 									<div class="xyblock">
 										<el-carousel height="230px">
-											<el-carousel-item v-for="item in xyxw" :key="item.id">
-												<a :href="item.url">
-													<div>
-															<img class="xypic" :src="item.schoolcultureimgsrc">
-													</div>
-													<span class="xypicdesc">{{item.schoolculturedesc}}</span>
-												</a>
+											<el-carousel-item v-for="item in xyxw" :key="item.id" >
+												<div>
+														<img class="xypic" :src="item.schoolcultureimgsrc" >
+												</div>
+												<span class="xypicdesc">{{item.schoolculturedesc}}</span>
 											</el-carousel-item>
 										</el-carousel>
 									</div>
@@ -114,8 +112,8 @@ export default {
         }],
         wenzhang: [{
             "id": "",
-            "regulationstitle": "",
-            "regulationsurl": ""
+            "regulationsname": "",
+            "regulationsUrl": ""
         }],
         xyxw: [{
             "id": "",
@@ -125,8 +123,11 @@ export default {
 			}
 		},
 		methods: {
-			test(info){
-        window.open(info.regulationsurl)
+			test(item){
+        window.open(item.regulationsUrl);
+			},
+			jump(item) {
+				window.open(item.newsurl);
 			},
 			getNews() {
 				this.$axios.get("http://127.0.0.1:8990/findnews", {

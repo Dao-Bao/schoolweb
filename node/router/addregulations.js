@@ -9,7 +9,9 @@ module.exports = (req, res) => {
   regulations
   .create({
     name: data.name,
-    base64: data.base64,
+    // base64: data.base64,
+    // let {ext} = path.parser(req.filename),
+    // regulationUrl: "/public/documents" + req.file.filename
   })
   .then(
     (data) => {

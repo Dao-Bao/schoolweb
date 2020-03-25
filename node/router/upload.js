@@ -1,5 +1,7 @@
 const multer = require("multer");
 const path = require("path");
+const regulations = require("../db/regulations"); /**引入数据库规则 */
+
 
 //定义磁盘储存引擎
 let storage = multer.diskStorage({
@@ -13,10 +15,6 @@ let storage = multer.diskStorage({
   //文件名
   filename: function (req, file, cb) {
     let {ext} = path.parse(file.originalname);  //匹配后缀名
-    // let {name} = path.parse(file.originalname).name;
-    // let name = file.name;
-    // cb(null, file.fieldname + '-' + Date.now())
-    // cb(null, file.name + ext);  //使用name
     cb(null, path.parse(file.originalname).name + ext );
   }
 })
@@ -32,9 +30,9 @@ let upload = multer({
   fileFilter(req, file, cb) {
     let {ext} = path.parse(file.originalname);  //匹配后缀名
     cb(null,/^\.doc|\ .docx|\.xlsx|\.xls|\.pdf$/.test(ext));  //正则检测文件格式
-    // console.log(file);
+    console.log(file);
     // console.log(path.parse(file.originalname));
-    // console.log((path.parse(file.originalname).name));
+    console.log((path.parse(file.originalname).name));
   },
 
   //限制数据大小
@@ -52,7 +50,31 @@ module.exports = (req, res) => {
     }
 
     // 一切都好
-    res.send({"code": "0"});
+    regulations
+      .create({
+        regulationsname: req.file.filename,
+        regulationsUrl: req.file.path
+      })
+      .then( () => {
+        // console.log(res.send);
+          res.send({
+            code: 0,
+            message: "提交成功"
+          });
+        }
+      )
+      .catch(
+        (e) => {
+          console.log(e);
+          res.send({
+            code: 1,
+            message: "提交失败"
+          });
+        })
+
+    // console.log(req.file.filename);  //文件名
+    // console.log(req.file.path);      //文件存放路径
+    // res.send({"code": "0"});
     // console.log();
   })
 };

@@ -2,7 +2,7 @@
         <el-container>
             <top></top><br>
             <el-main>
-                <div v-for="item in teacher" :key="item.id" class="teacher">
+                <div v-for="(item,index) in teacher" :key="index" class="teacher">
                     <div class="teacher_f">
                         <img :src="item.src">
                         <div class="jianjie">

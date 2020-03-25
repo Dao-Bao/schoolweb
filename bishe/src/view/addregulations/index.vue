@@ -34,6 +34,10 @@ export default {
         done: function(res){
           if(res.code == "0") {
             alert("上传成功");
+            console.log(res.message);
+          } else if(res.code == "1") {
+            alert("上传失败");
+            console.log(res.msg);
           }
           // layer.msg('上传成功');
           // console.log(res);
