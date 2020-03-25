@@ -7,14 +7,17 @@ let storage = multer.diskStorage({
   //储存的目录
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../public/documents"));
-    console.log(path.parse(file.originalname));
+    // console.log(path.parse(file.originalname));
   },
 
   //文件名
   filename: function (req, file, cb) {
-    let {axt} = path.parse(file.originalname);  //匹配后缀名
+    let {ext} = path.parse(file.originalname);  //匹配后缀名
+    // let {name} = path.parse(file.originalname).name;
+    // let name = file.name;
     // cb(null, file.fieldname + '-' + Date.now())
-    cb(null, req.id + axt);  //使用id
+    // cb(null, file.name + ext);  //使用name
+    cb(null, path.parse(file.originalname).name + ext );
   }
 })
 
@@ -27,9 +30,11 @@ let upload = multer({
 
   //上传格式限制
   fileFilter(req, file, cb) {
-    let {axt} = path.parse(file.originalname);  //匹配后缀名
-    cb(null,/^\.doc|\.docx|\.xlsx|\.xls|\.pdf$/.test(axt));  //正则检测文件格式
+    let {ext} = path.parse(file.originalname);  //匹配后缀名
+    cb(null,/^\.doc|\ .docx|\.xlsx|\.xls|\.pdf$/.test(ext));  //正则检测文件格式
+    // console.log(file);
     // console.log(path.parse(file.originalname));
+    // console.log((path.parse(file.originalname).name));
   },
 
   //限制数据大小
@@ -48,6 +53,6 @@ module.exports = (req, res) => {
 
     // 一切都好
     res.send({"code": "0"});
-    console.log();
+    // console.log();
   })
 };

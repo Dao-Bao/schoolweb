@@ -107,18 +107,18 @@ export default {
 				aMenuConfig: [],
 				rMenuConfig: [],
         pic: [{
-            "_id": "",
+            "id": "",
             "newsimgsrc": "",
             "newstitle": "",
             "newsurl": ""
         }],
         wenzhang: [{
-            "_id": "",
+            "id": "",
             "regulationstitle": "",
             "regulationsurl": ""
         }],
         xyxw: [{
-            "_id": "",
+            "id": "",
             "schoolcultureimgsrc": "",
             "schoolculturedesc": ""
         }]

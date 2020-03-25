@@ -3,7 +3,7 @@ const regulations = require("../db/regulations");
 module.exports = (req, res) => {
 
   let data = req.body;
-  console.log(data);
+  // console.log(data);
 
   /**增加数据 */
   regulations
