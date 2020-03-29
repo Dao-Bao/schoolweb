@@ -1,4 +1,4 @@
-const user = require("../db/schooloauser");
+const user = require("../../../db/schooloauser");
 
 module.exports = (req, res) => {
     //得到前端传过来的数据

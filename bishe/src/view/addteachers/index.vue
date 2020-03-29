@@ -18,19 +18,29 @@
 					<el-input v-model="form.teacherdesc"></el-input>
 				</el-form-item>
 
+
 				<el-form-item label="教师照片">
-					<button type="button" class="layui-btn" id="upload"><i class="layui-icon"></i>上传头像</button>
+					<div>
+						<el-upload class="avatar-uploader" :on-change="getFile" action>
+							<img v-if="imageUrl" :src="teacherheadersrc" class="avatar" />
+							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						</el-upload>
+						<div class="tips">
+							<span class="el-icon-upload2"></span>点击更换头像
+							<span class="el-icon-upload2"></span>
+						</div>
+							{{imageUrl}}
+							{{teacherheadersrc}}
+					</div>
+						<!-- <upload-header></upload-header> -->
 				</el-form-item>
-				
 
 				<el-form-item>
 					<el-button type="primary" @click="onSubmit">上传</el-button>
 					<el-button @click="goBack" class="btnr">取消</el-button>
 				</el-form-item>
 
-
 		</el-form>
-
 
     <bottom></bottom>
   </div>
@@ -40,24 +50,52 @@
 import axios from "axios"
 import top from "@/components/top"
 import bottom from "@/components/bottom"
+import uploadHeader from "./components/uploadheader" 
 export default {
   data() {
     return {
       form: {
           teachername: "",
           teachersex: "",
-          teacherdesc: ""
-        }
+					teacherdesc: "",
+					teacherheadersrc: ""
+				},
+      imageUrl: ''
     }
   },
   components: {
 		top,
-		bottom
+		bottom,
+		uploadHeader
   },
   methods: {
 		goBack() {
 			this.$router.push({path: "/loginsuccess"});
 		},
+		getFile (file, fileList) {
+      // console.log(file);
+      this.getBase64(file.raw).then(res => {
+        // this.base64ToFile(res);
+        this.form.teacherheadersrc = res;
+        console.log(res);
+      })
+    },
+    getBase64 (file) {
+      return new Promise(function (resolve, reject) {
+        let reader = new FileReader();
+        let imgResult = '';
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          imgResult = reader.result;
+        }
+        reader.onerror = function (error) {
+          reject(error);
+        }
+        reader.onloadend = function () {
+          resolve(imgResult);
+        }
+      })
+    },
 		onSubmit() {
 			this.$axios({
 				method: "post",
@@ -66,7 +104,8 @@ export default {
 				data : {
 					teachername: this.form.teachername,
           teachersex: this.form.teachersex,
-          teacherdesc: this.form.teacherdesc
+					teacherdesc: this.form.teacherdesc,
+					teacherheadersrc: this.form.teacherheadersrc
 				}
 			}).then((res) => {
 				if(res.data.code == "0") {
@@ -78,28 +117,39 @@ export default {
 			});
 		}
 	},
-	mounted() {
-    layui.use('upload', function(){
-      var upload = layui.upload;
+	// mounted() {
+  //   layui.use('upload', function(){
+  //     var $ = layui.jquery,
+	// 		upload = layui.upload;
       
-      //执行实例
-      var uploadInst = upload.render({
-        elem: '#upload',
-        url: 'http://127.0.0.1:8990/addteachers',
-				accept: 'file' ,//普通文件
-				exts: '.png |.jpg| .jepg',  //上传文件格式
-        done: function(res){
-          if(res.code == "0") {
-            alert("上传成功");
-            console.log(res.message);
-          } else if(res.code == "1") {
-            alert("上传失败");
-            console.log(res.msg);
-          }
-        }
-      });
-    })
-  }
+  //     //执行实例
+	// 		var uploadInst = upload.render({
+	// 				elem: '#test1',
+	// 				url: 'http://127.0.0.1:8990/addteachers', //改成您自己的上传接口
+	// 				before: function(obj){
+	// 					//预读本地文件示例，不支持ie8
+	// 					obj.preview(function(index, file, result){
+	// 						$('#demo1').attr('src', result); //图片链接（base64）
+	// 					});
+	// 				},
+	// 				done: function(res){
+	// 					//如果上传失败
+	// 					if(res.code > 0){
+	// 						return layer.msg('上传失败');
+	// 					}
+	// 					//上传成功
+	// 				},
+	// 				error: function(){
+	// 					//演示失败状态，并实现重传
+	// 					var demoText = $('#demoText');
+	// 					demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+	// 					demoText.find('.demo-reload').on('click', function(){
+	// 						uploadInst.upload();
+	// 					});
+	// 				}
+	// 			});
+  //   })
+  // }
 }
 </script>
 

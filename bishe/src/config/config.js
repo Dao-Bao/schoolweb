@@ -35,3 +35,59 @@ export const rMenuConfig = [
     imgsrc: "https://pic.images.ac.cn/image/5e778db30ebb1"
   }
 ]
+export const loginSuccess = [
+  {
+    name: "上传学院新闻",
+    routerto: "/addnews",
+    index: "1-1"
+  }, {
+    name: "上传通知文件",
+    routerto: "/addregulations",
+    index: "1-2"
+  }, {
+    name: "上传学院文化",
+    routerto: "/addschoolculture",
+    index: "1-3"
+  }, {
+    name: "上传教师信息",
+    routerto: "/addteachers",
+    index: "1-4"
+  }
+]
+export const newsTableData = [
+  {
+    prop: "newstitle",
+    label: "新闻标题",
+    width: "160"
+  }, {
+    prop: "newsimgsrc",
+    label: "图片地址",
+    width: "200"
+  }, {
+    prop: "newsurl",
+    label: "新闻链接",
+    width: "200"
+  }
+]
+export const regulationsTableData = [
+  {
+    prop: "regulationsname",
+    label: "文件名",
+    width: "160"
+  }, {
+    prop: "regulationsUrl",
+    label: "文件储存地址",
+    width: "300"
+  }
+]
+export const culturesTableData = [
+  {
+    prop: "schoolcultureimgsrc",
+    label: "学院文化图片地址",
+    width: "300"
+  }, {
+    prop: "schoolculturedesc",
+    label: "学院文化描述",
+    width: "160"
+  }
+]

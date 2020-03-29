@@ -14,6 +14,7 @@ import AddRegulations from '@/view/addregulations/index'
 import AddSchoolculture from '@/view/addschoolculture/index'
 // import AddSchoolculture from '@/view/addschoolculture/upload'
 import AddTeachers from '@/view/addteachers/index'
+// import UploadHeader from '@/view/addteachers/components/uploadheader'
 import test from '@/view/test'
 
 Vue.use(Router)
@@ -76,9 +77,13 @@ export default new Router({
         }, {
             path: '/addteachers',
             name: 'AddTeachers',
-            component: AddTeachers
-        },
-        {
+            component: AddTeachers,
+            // children: {
+            //     path: '/uploadheader',
+            //     name: 'UploadHeader',
+            //     component: UploadHeader
+            // }
+        }, {
             path: '/test/:id',
             name: 'test',
             component: test

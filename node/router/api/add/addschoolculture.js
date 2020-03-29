@@ -1,16 +1,17 @@
-const news = require("../db/news");
+const schoolculture = require("../../../db/schoolculture");
 
 module.exports = (req, res) => {
 
   let data = req.body;
-  console.log(data);
+  // console.log(data);
 
   /**增加数据 */
-  news
+  schoolculture
   .create({
-    newstitle: data.newstitle,
-    newsimgsrc: data.newsimgsrc,
-    newsurl: data.newsurl,
+    schoolcultureimgsrc: data.schoolcultureimgsrc,
+    schoolculturedesc: data.schoolculturedesc,
+    // fieldSingleFile: data.fieldSingleFile,
+    // fieldArrayFile: data.fieldArrayFile
   })
   .then(
     (data) => {

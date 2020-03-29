@@ -1,6 +1,7 @@
 const multer = require("multer");
 const path = require("path");
-const teachers = require("../db/teachers");
+const teachers = require("../../../db/teachers"); /**引入数据库规则 */
+
 
 //定义磁盘储存引擎
 let storage = multer.diskStorage({
@@ -28,21 +29,20 @@ let upload = multer({
   //上传格式限制
   fileFilter(req, file, cb) {
     let {ext} = path.parse(file.originalname);  //匹配后缀名
-    cb(null,/^\.jpg|\.png|\.jpeg$/.test(ext));  //正则检测文件格式
+    cb(null,/^\.jpg|\ .png$/.test(ext));  //正则检测文件格式
     // console.log(file);
     // console.log(path.parse(file.originalname));
     // console.log((path.parse(file.originalname).name));
+    // console.log(destination.__dirname);
   },
 
   //限制数据大小
   limits: {
-    fileSize: 1024*1024*4   /**图片数据不超过4M */
+    fileSize: 1024*1024*8
   }
 }).single("file");
 
-
 module.exports = (req, res) => {
-
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       // 发生错误
@@ -50,31 +50,37 @@ module.exports = (req, res) => {
       // 发生错误
     }
 
+    // 一切都好
 
-  /**增加数据 */
-  teachers
-  .create({
-    teachername: req.teachername,
-    teachersex: req.teachersex,
-    teacherdesc: req.teacherdesc,
-    // teacherheadersrc: req.file.path
+
+    /** 
+    teachers
+      .create({
+        // teacherheadersrc: req.file.path
+      })
+      .then( () => {
+        // console.log(req.file);
+        console.log(req.file.path);
+        // console.log(teacherheadersrc);
+          res.send({
+            code: 0,
+            message: "提交成功"
+          });
+        }
+      )
+      .catch(
+        (e) => {
+          console.log(e);
+          res.send({
+            code: 1,
+            message: "提交失败"
+          });
+        })
+        */
+
+    console.log(res);  //文件名
+    // console.log(req.file.path);      //文件存放路径
+    // res.send({"code": "0"});
+    // console.log("sdfsdf");
   })
-  .then(
-    (data) => {
-      res.send({
-        code: 0,
-        message: "提交成功"
-      });
-      // console.log(data)
-    }
-  )
-  .catch(
-    (e) => {
-      console.log(e);
-      res.send({
-        code: 1,
-        message: "提交失败"
-      });
-    });
-  })
-}
+};

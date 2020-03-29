@@ -1,7 +1,7 @@
-const schoolculture = require("../db/schoolculture");
+const regulations = require("../../../db/regulations");
 
 module.exports = (req, res) => {
-  schoolculture
+  regulations
   .find({})
   .then((data) => {
       res.send(data);

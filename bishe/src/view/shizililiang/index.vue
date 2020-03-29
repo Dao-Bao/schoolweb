@@ -1,18 +1,21 @@
 <template>
         <el-container>
             <top></top><br>
+
             <el-main>
                 <div v-for="(item,index) in teacher" :key="index" class="teacher">
                     <div class="teacher_f">
-                        <img :src="item.src">
+                        
                         <div class="jianjie">
-                            <div>{{item.name}}</div>
-                            <span>{{item.zhicheng}}</span>
-                            <div>{{item.desc}}</div>
+                            <img :src="item.teacherheadersrc">
+                            <div>{{item.teachername}}</div>
+                            <span>{{item.teachersex}}</span>
+                            <div>{{item.teacherdesc}}</div>
                         </div>
                     </div>
                 </div>
             </el-main><br>
+
             <el-footer>
                 <bottom></bottom>
             </el-footer>
@@ -31,43 +34,26 @@ export default {
     data() {
       return {
         teacher:[{
-            "id": "001",
-            "name":"zhangsan",
-            "src": "../../assets/zhangsan.png",
-            "zhicheng": "jiaoshou",
-            "desc": "2003年至今在信息工程学院任教，带领学生参加各种赛事"
-        }, {
-            "id": "002",
-            "name": "lisi",
-            "src": "../../assets/lisi.png",
-            "zhicheng": "jiangshi",
-            "desc": "曾获高级教师称号"
-        }, {
-            "id": "003",
-            "name": "qizong",
-            "src": "../../assets/qizong.png",
-            "zhicheng": "jiangshi",
-            "desc": "曾获中级教师称号"
-        }, {
-            "id": "001",
-            "name":"zhangsan",
-            "src": "../../assets/zhangsan.png",
-            "zhicheng": "jiaoshou",
-            "desc": "2003年至今在信息工程学院任教，带领学生参加各种赛事"
-        }, {
-            "id": "002",
-            "name": "lisi",
-            "src": "../../assets/lisi.png",
-            "zhicheng": "jiangshi",
-            "desc": "曾获高级教师称号"
-        }, {
-            "id": "003",
-            "name": "qizong",
-            "src": "../../assets/qizong.png",
-            "zhicheng": "jiangshi",
-            "desc": "曾获中级教师称号"
+            "id": "",
+            "teachername":"",
+            "teachersex": "",
+            "teacherheadersrc": "",
+            "teacherdesc": ""
         }]
       }
+    },
+    methods: {
+        getTeacher() {
+            this.$axios.get("http://127.0.0.1:8990/findteachers", {})
+				.then(this.getTeacherSucc)
+        },
+        getTeacherSucc(res) {
+            console.log(res.data);
+            this.teacher = res.data;
+        }
+    },
+    mounted() {
+        this.getTeacher()
     }
 }
 </script>

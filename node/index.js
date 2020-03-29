@@ -52,15 +52,18 @@ app.use(cors()); /**解决跨域 */
 
 
 /**路由监听 */
-app.post("/addnews",require("./router/addnews"));/**上传新闻接口 */
-app.post("/addteachers", require("./router/addteachers"));/**上传师资力量接口 */
-app.post("/addregulations", require("./router/addregulations")); /**上传通知接口 */
-app.post("/addschoolculture", require("./router/addschoolculture"));/**上传校园文化接口 */
-app.post("/adduser", require("./router/adduser"));/**新增校园oa用户 */
-app.post("/login", require('./router/login')); /** 登陆验证 */
-app.post("/upload", require('./router/upload'));  /**上传接口 */
+app.post("/addnews",require("./router/api/add/addnews"));/**上传新闻接口 */
+app.post("/addteachers", require("./router/api/add/addteachers"));/**上传师资力量接口 */
+app.post("/uploadteachersheader", require("./router/api/add/uploadteachersheader")); /**上传教师照片接口 */
+app.post("/addregulations", require("./router/api/add/addregulations")); /**上传通知接口 */
+app.post("/addschoolculture", require("./router/api/add/addschoolculture"));/**上传校园文化接口 */
+app.post("/adduser", require("./router/api/add/adduser"));/**新增校园oa用户 */
+app.post("/login", require('./router/api/add/login')); /** 登陆验证 */
+app.post("/upload", require('./router/api/add/upload'));  /**上传接口 */
 
-app.get("/findnews", require('./router/findnews')); /** 发送学院新闻接口 */
-app.get("/findregulations", require('./router/findregulations')); /** 发送学院通知接口 */
-app.get("/findschoolculture", require('./router/findschoolculture')); /** 发送学院文化接口 */
-app.get("/findteachers", require('./router/findteachers')); /** 师资力量发送接口 */
+app.get("/findnews", require('./router/api/find/findnews')); /** 发送学院新闻接口 */
+app.get("/findregulations", require('./router/api/find/findregulations')); /** 发送学院通知接口 */
+app.get("/findschoolculture", require('./router/api/find/findschoolculture')); /** 发送学院文化接口 */
+app.get("/findteachers", require('./router/api/find/findteachers')); /** 师资力量发送接口 */
+
+app.get("/removenews", require('./router/api/remove/removenews')); /**删除news接口 */

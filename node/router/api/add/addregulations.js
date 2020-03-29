@@ -1,4 +1,4 @@
-const regulations = require("../db/regulations");
+const regulations = require("../../../db/regulations");
 
 module.exports = (req, res) => {
 

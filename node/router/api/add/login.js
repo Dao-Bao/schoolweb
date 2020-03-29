@@ -1,4 +1,4 @@
-const user = require("../db/schooloauser");
+const user = require("../../../db/schooloauser");
 // const crypto = require("crypto");
 
 module.exports = (req, res) => {

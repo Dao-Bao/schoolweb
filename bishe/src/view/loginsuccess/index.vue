@@ -2,36 +2,61 @@
   <div>
     <top></top><br/>
 
-    <el-row class="tac">
-        <el-col :span="5">
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
+    <el-container style="height: 500px; border: 1px solid #eee">
+
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <el-menu :default-openeds="['1', '3']">
           <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>上传文件</span>
-            </template>
+            <template slot="title"><i class="el-icon-message"></i>上传文件</template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><router-link to="/addnews">上传学院新闻</router-link></el-menu-item>
-              <el-menu-item index="1-2"><router-link to="/addregulations">上传通知文件</router-link></el-menu-item>
-              <el-menu-item index="1-3"><router-link to="/addschoolculture">上传学院文化</router-link></el-menu-item>
-              <el-menu-item index="1-4"><router-link to="/addteachers">上传教师信息</router-link></el-menu-item>
+              <el-menu-item v-for="(item,index) of loginSuccess" :key="index" :index="item.index">
+                <router-link :to="item.routerto">{{item.name}}</router-link>
+              </el-menu-item>
             </el-menu-item-group>
-
           </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">用户管理</span>
-          </el-menu-item>
+          <el-menu-item-group>
+            <el-menu-item  index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
+          </el-menu-item-group>
         </el-menu>
-      </el-col>
-    </el-row>
+      </el-aside>
+  
+      <el-container>
+        <el-main>
+            <el-table :data="news" border style="width: 100%" height="200">
+              <el-table-column v-for="(item,index) of newsTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
+              </el-table-column>
+              <el-table-column fixed="right" label="操作" width="140">
+                <template>
+                  <el-button @click="updatenews" type="text" size="small">编辑</el-button>
+                  <el-button @click="removenews" type="text" size="small">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table><br>
 
+            <el-table :data="regulations" border style="width: 100%" height="210">
+              <el-table-column v-for="(item,index) of regulationsTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
+              </el-table-column>
+              <el-table-column fixed="right" label="操作" width="160">
+                <template>
+                  <el-button @click="updateregulations" type="text" size="small">编辑</el-button>
+                  <el-button @click="removeregulations" type="text" size="small">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table><br>
 
+            <el-table :data="cultures" border style="width: 100%" height="200">
+              <el-table-column v-for="(item,index) of culturesTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
+              </el-table-column>
+              <el-table-column fixed="right" label="操作" width="160">
+                <template>
+                  <el-button @click="updatecultures" type="text" size="small">编辑</el-button>
+                  <el-button @click="removecultures" type="text" size="small">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table><br>
+        </el-main>
+      </el-container>
+    </el-container>
 
     <bottom></bottom>
   </div>
@@ -40,14 +65,71 @@
 <script>
 import top from "@/components/top"
 import bottom from "@/components/bottom"
+import { loginSuccess,newsTableData,regulationsTableData,culturesTableData } from "@/config/config.js"
 export default {
-    components: {
+  data() {
+      return {
+        loginSuccess: [],
+        newsTableData: [],
+        regulationsTableData: [],
+        culturesTableData: [],
+        news: [],
+        regulations: [],
+        cultures: []
+      }
+    },
+  components: {
 		top,
 		bottom
+  },
+  methods: {
+    getNews() {
+				this.$axios.get("http://127.0.0.1:8990/findnews", {
+				})
+				.then(this.getFindNewsSucc)
+			},
+			getFindNewsSucc (res) {
+				// console.log(res.data.newsimgsrc);
+				this.news = res.data;
+				// console.log(this.pic);
+      },
+      getFindRegulations() {
+				this.$axios.get("http://127.0.0.1:8990/findregulations")
+				.then(this.getFindRegulationsSucc)
+			},
+			getFindRegulationsSucc (res) {
+				// console.log(res.data);
+				this.regulations = res.data;
+				// console.log(this.wenzhang);
+      },
+      getSchoolCulture() {
+				this.$axios.get("http://127.0.0.1:8990/findschoolculture")
+				.then(this.getSchoolCultureSucc)
+			},
+			getSchoolCultureSucc (res) {
+				// console.log(res.data);
+				this.cultures = res.data;
+			}
+  },
+  mounted() {
+    this.getNews(),
+    this.getFindRegulations(),
+    this.getSchoolCulture(),
+    this.loginSuccess = loginSuccess,
+    this.newsTableData = newsTableData,
+    this.regulationsTableData = regulationsTableData,
+    this.culturesTableData = culturesTableData
   }
 }
 </script>
 
-<style>
-  a{text-decoration:none;}
+<style scoped>
+  .el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
+  }
+  .el-aside {
+    color: #333;
+  }
 </style>

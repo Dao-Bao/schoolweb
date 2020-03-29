@@ -1,17 +1,16 @@
-const schoolculture = require("../db/schoolculture");
+const news = require("../../../db/news");
 
 module.exports = (req, res) => {
 
   let data = req.body;
-  // console.log(data);
+  console.log(data);
 
   /**增加数据 */
-  schoolculture
+  news
   .create({
-    // schoolcultureimgsrc: data.schoolcultureimgsrc,
-    // schoolculturedesc: data.schoolculturedesc,
-    fieldSingleFile: data.fieldSingleFile,
-    fieldArrayFile: data.fieldArrayFile
+    newstitle: data.newstitle,
+    newsimgsrc: data.newsimgsrc,
+    newsurl: data.newsurl,
   })
   .then(
     (data) => {
@@ -19,7 +18,6 @@ module.exports = (req, res) => {
         code: 0,
         message: "提交成功"
       });
-      console.log(data);
     }
   )
   .catch(

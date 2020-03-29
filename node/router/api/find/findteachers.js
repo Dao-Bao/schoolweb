@@ -1,11 +1,10 @@
-const regulations = require("../db/regulations");
+const teachers = require("../../../db/teachers");
 
 module.exports = (req, res) => {
-  regulations
+  teachers
   .find({})
   .then((data) => {
       res.send(data);
-      console.log(data);
     }
   )
   .catch(

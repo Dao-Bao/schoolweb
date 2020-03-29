@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require("path");
-const regulations = require("../db/regulations"); /**引入数据库规则 */
+const regulations = require("../../../db/regulations"); /**引入数据库规则 */
 
 
 //定义磁盘储存引擎
@@ -30,9 +30,10 @@ let upload = multer({
   fileFilter(req, file, cb) {
     let {ext} = path.parse(file.originalname);  //匹配后缀名
     cb(null,/^\.doc|\ .docx|\.xlsx|\.xls|\.pdf$/.test(ext));  //正则检测文件格式
-    console.log(file);
+    // console.log(file);
     // console.log(path.parse(file.originalname));
-    console.log((path.parse(file.originalname).name));
+    // console.log((path.parse(file.originalname).name));
+    // console.log(destination.__dirname);
   },
 
   //限制数据大小
@@ -56,7 +57,8 @@ module.exports = (req, res) => {
         regulationsUrl: req.file.path
       })
       .then( () => {
-        // console.log(res.send);
+        // console.log(req.file);
+        // console.log(req.file.path);
           res.send({
             code: 0,
             message: "提交成功"

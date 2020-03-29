@@ -1,4 +1,4 @@
-const news = require("../db/news");
+const news = require("../../../db/news");
 
 module.exports = (req, res) => {
   news
