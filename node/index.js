@@ -69,5 +69,5 @@ app.get("/findteachers", require('./router/api/find/findteachers')); /** 师资�
 app.get("/removenews", require('./router/api/remove/removenews')); /**删除news接口 */
 app.get("/removeregulations", require('./router/api/remove/removeregulations')); /**删除regulations接口 */
 app.get("/removecultures", require('./router/api/remove/removecultures')); /**删除cultures接口 */
-app.get("/removeteachers", require('./router/api/removeteachers')); /**删除teachers接口 */
+// app.get("/removeteachers", require('./router/api/removeteachers')); /**删除teachers接口 */
 

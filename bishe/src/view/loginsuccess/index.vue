@@ -25,7 +25,7 @@
             <el-table :data="news" border style="width: 100%" height="200">
               <el-table-column v-for="(item,index) of newsTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
               </el-table-column>
-              <el-table-column fixed="right" label="操作" width="140">
+              <el-table-column fixed="right" label="操作" width="100">
                 <template>
                   <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removenews" type="text" size="small">删除</el-button>
@@ -33,10 +33,10 @@
               </el-table-column>
             </el-table><br>
 
-            <el-table :data="regulations" border style="width: 100%" height="210">
+            <el-table :data="regulations" border style="width: 100%" height="180">
               <el-table-column v-for="(item,index) of regulationsTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
               </el-table-column>
-              <el-table-column fixed="right" label="操作" width="160">
+              <el-table-column fixed="right" label="操作" width="100">
                 <template>
                   <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removeregulations" type="text" size="small">删除</el-button>
@@ -44,13 +44,13 @@
               </el-table-column>
             </el-table><br>
 
-            <el-table :data="cultures" border style="width: 100%" height="200">
+            <el-table :data="cultures" border style="width: 100%" height="180">
               <el-table-column v-for="(item,index) of culturesTableData" :key="index" :prop="item.prop" :label="item.label"  :width="item.width">
               </el-table-column>
-              <el-table-column fixed="right" label="操作" width="160">
+              <el-table-column fixed="right" label="操作" width="100">
                 <template>
                   <el-button  type="text" size="small">编辑</el-button>
-                  <el-button type="text" size="small">删除</el-button>
+                  <el-button @click="removecultures" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
             </el-table><br>
@@ -112,11 +112,16 @@ export default {
       },
       removenews() {
         this.$axios.get("http://127.0.0.1:8990/removenews")
-        .then(alert("删除成功"))
+        .then( alert("删除成功") )
       },
       removeregulations() {
         this.$axios.get("http://127.0.0.1:8990/removeregulations")
-        .then(alert("删除成功"))
+        .then( alert("删除成功" )
+        )
+      },
+      removecultures() {
+        this.$axios.get("http://127.0.0.1:8990/removecultures")
+        .then( alert("删除成功") )
       }
   },
   mounted() {

@@ -62,32 +62,32 @@ export const newsTableData = [
   }, {
     prop: "newsimgsrc",
     label: "图片地址",
-    width: "200"
+    width: "300"
   }, {
     prop: "newsurl",
     label: "新闻链接",
-    width: "200"
+    width: "300"
   }
 ]
 export const regulationsTableData = [
   {
     prop: "regulationsname",
     label: "文件名",
-    width: "160"
+    width: "200"
   }, {
     prop: "regulationsUrl",
     label: "文件储存地址",
-    width: "300"
+    width: "430"
   }
 ]
 export const culturesTableData = [
   {
     prop: "schoolcultureimgsrc",
     label: "学院文化图片地址",
-    width: "300"
+    width: "430"
   }, {
     prop: "schoolculturedesc",
     label: "学院文化描述",
-    width: "160"
+    width: "200"
   }
 ]
