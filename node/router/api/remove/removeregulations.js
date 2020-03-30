@@ -1,9 +1,9 @@
-const news = require("../../../db/news");
+const regulations = require("../../../db/regulations");
 
 module.exports = (req, res) => {
 
     //查找条件
-    news
+    regulations
         .deleteOne({})
         .then((data) => {
             // console.log("删除成功");

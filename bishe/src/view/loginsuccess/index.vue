@@ -27,7 +27,7 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="140">
                 <template>
-                  <el-button @click="updatenews" type="text" size="small">编辑</el-button>
+                  <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removenews" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
@@ -38,7 +38,7 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="160">
                 <template>
-                  <el-button @click="updateregulations" type="text" size="small">编辑</el-button>
+                  <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removeregulations" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
@@ -49,8 +49,8 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="160">
                 <template>
-                  <el-button @click="updatecultures" type="text" size="small">编辑</el-button>
-                  <el-button @click="removecultures" type="text" size="small">删除</el-button>
+                  <el-button  type="text" size="small">编辑</el-button>
+                  <el-button type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
             </el-table><br>
@@ -109,7 +109,15 @@ export default {
 			getSchoolCultureSucc (res) {
 				// console.log(res.data);
 				this.cultures = res.data;
-			}
+      },
+      removenews() {
+        this.$axios.get("http://127.0.0.1:8990/removenews")
+        .then(alert("删除成功"))
+      },
+      removeregulations() {
+        this.$axios.get("http://127.0.0.1:8990/removeregulations")
+        .then(alert("删除成功"))
+      }
   },
   mounted() {
     this.getNews(),

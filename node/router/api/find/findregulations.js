@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   .find({})
   .then((data) => {
       res.send(data);
-      console.log(data);
+      // console.log(data);
     }
   )
   .catch(

@@ -1,9 +1,9 @@
-const news = require("../../../db/news");
+const cultures = require("../../../db/schoolculture");
 
 module.exports = (req, res) => {
 
     //查找条件
-    news
+    cultures
         .deleteOne({})
         .then((data) => {
             // console.log("删除成功");
