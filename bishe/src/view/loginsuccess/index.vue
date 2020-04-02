@@ -27,7 +27,6 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="100">
                 <template>
-                  <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removenews" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
@@ -38,7 +37,6 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="100">
                 <template>
-                  <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removeregulations" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
@@ -49,7 +47,6 @@
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="100">
                 <template>
-                  <el-button  type="text" size="small">编辑</el-button>
                   <el-button @click="removecultures" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>

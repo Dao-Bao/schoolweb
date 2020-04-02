@@ -8,7 +8,7 @@ let storage = multer.diskStorage({
 
   //储存的目录
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../public/documents"));
+    cb(null, path.join(__dirname, "../../../public/documents"));
     // console.log(path.parse(file.originalname));
   },
 
@@ -30,8 +30,7 @@ let upload = multer({
   fileFilter(req, file, cb) {
     let {ext} = path.parse(file.originalname);  //匹配后缀名
     cb(null,/^\.doc|\ .docx|\.xlsx|\.xls|\.pdf$/.test(ext));  //正则检测文件格式
-    // console.log(file);
-    // console.log(path.parse(file.originalname));
+    // console.log(file.originalname);
     // console.log((path.parse(file.originalname).name));
     // console.log(destination.__dirname);
   },
@@ -48,31 +47,52 @@ module.exports = (req, res) => {
       // 发生错误
     } else if (err) {
       // 发生错误
-    }
+    } 
 
-    // 一切都好
+      // 一切都好
     regulations
-      .create({
-        regulationsname: req.file.filename,
-        regulationsUrl: req.file.path
+    .create({
+      regulationsname: req.file.filename,
+      regulationsUrl: req.file.path
+    })
+    .then( () => {
+      // console.log(req.file);
+        res.send({
+          code: 0,
+          message: "提交成功"
+        });
+      }
+    )
+    .catch((e) => {
+        console.log(e);
+        res.send({
+          code: 1,
+          message: "提交失败"
+        });
       })
-      .then( () => {
-        // console.log(req.file);
-        // console.log(req.file.path);
-          res.send({
-            code: 0,
-            message: "提交成功"
-          });
-        }
-      )
-      .catch(
-        (e) => {
-          console.log(e);
-          res.send({
-            code: 1,
-            message: "提交失败"
-          });
-        })
+
+    // // 一切都好
+    // regulations
+    //   .create({
+    //     // regulationsname: req.file.filename,
+    //     // regulationsUrl: req.file.path
+    //   })
+    //   .then( () => {
+    //     console.log(req.file);
+    //       res.send({
+    //         code: 0,
+    //         message: "提交成功"
+    //       });
+    //     }
+    //   )
+    //   .catch(
+    //     (e) => {
+    //       console.log(e);
+    //       res.send({
+    //         code: 1,
+    //         message: "提交失败"
+    //       });
+    //     })
 
     // console.log(req.file.filename);  //文件名
     // console.log(req.file.path);      //文件存放路径

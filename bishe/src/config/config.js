@@ -66,7 +66,7 @@ export const newsTableData = [
   }, {
     prop: "newsurl",
     label: "新闻链接",
-    width: "300"
+    width: "280"
   }
 ]
 export const regulationsTableData = [

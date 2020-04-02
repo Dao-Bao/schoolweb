@@ -1,9 +1,11 @@
 <template>
   <div>
 
-    <top></top> <br>
-    <button type="button" class="layui-btn" id="upload"><i class="layui-icon"></i>上传文件</button>
-
+    <top></top> <br/>
+    <!-- <div class="btn"> -->
+      <button type="button" class="layui-btn" id="upload"><i class="layui-icon"></i>上传文件</button><br>
+      <span>点击上方按钮上传文件</span>
+    <!-- </div> -->
     <bottom></bottom>
   </div>
 
@@ -29,7 +31,7 @@ export default {
       //执行实例
       var uploadInst = upload.render({
         elem: '#upload',
-        url: 'http://127.0.0.1:8990/upload', //改成您自己的上传接口
+        url: 'http://127.0.0.1:8990/upload',
         accept: 'file' ,//普通文件
         done: function(res){
           if(res.code == "0") {
@@ -47,3 +49,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  /* .btn {
+    margin: 0 auto;
+  }  */
+  .layui-btn {
+    margin: 0 auto;
+  }
+</style>
