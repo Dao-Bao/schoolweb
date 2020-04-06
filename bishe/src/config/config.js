@@ -91,3 +91,12 @@ export const culturesTableData = [
     width: "200"
   }
 ]
+export const oaUsers = [
+  {
+    prop: "username",
+    label: "用户名"
+  }, {
+    prop: "userpassword",
+    label: "密码"
+  }
+]

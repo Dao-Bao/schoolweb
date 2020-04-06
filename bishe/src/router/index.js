@@ -8,12 +8,14 @@ import Login from '@/view/login/index'
 import Xygk from '@/view/xueyuangaikuang/index'
 import Szll from '@/view/shizililiang/index'
 import Jyjx from '@/view/jiaoyujiaoxue/index'
-import LoginSuccess from '@/view/loginsuccess/index'
+import LoginSuccessAdmin from '@/view/loginsuccessadmin/index'
+import LoginSuccessUser from '@/view/loginsuccessuser/index'
 import AddNews from '@/view/addnews/index'
 import AddRegulations from '@/view/addregulations/index'
 import AddSchoolculture from '@/view/addschoolculture/index'
 // import AddSchoolculture from '@/view/addschoolculture/upload'
 import AddTeachers from '@/view/addteachers/index'
+import AddUser from '@/view/addusers/index'
 // import UploadHeader from '@/view/addteachers/components/uploadheader'
 import test from '@/view/test'
 
@@ -49,9 +51,13 @@ export default new Router({
             name: 'jyjx',
             component: Jyjx
         }, {
-            path: '/loginsuccess',
-            name: 'LoginSuccess',
-            component: LoginSuccess,
+            path: '/loginsuccessadmin',
+            name: 'LoginSuccessAdmin',
+            component: LoginSuccessAdmin,
+        }, {
+            path: '/loginsuccessuser',
+            name: 'LoginSuccessUser',
+            component: LoginSuccessUser
         }, {
             path: '/addnews',
             name: 'AddNews',
@@ -60,13 +66,7 @@ export default new Router({
             path: '/addnews',
             name: 'AddNews',
             component: AddNews,
-        },
-        //  {
-        //     path: '/addnews',
-        //     name: 'AddNews',
-        //     component: AddNews,
-        // }, 
-        {
+        }, {
             path: '/addregulations',
             name: 'AddRegulations',
             component: AddRegulations
@@ -83,6 +83,10 @@ export default new Router({
             //     name: 'UploadHeader',
             //     component: UploadHeader
             // }
+        }, {
+            path: '/addusers',
+            name: 'AddUser',
+            component: AddUser
         }, {
             path: '/test/:id',
             name: 'test',

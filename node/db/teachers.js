@@ -25,7 +25,7 @@ let Schema = mongoose.Schema;
 
 /**表规则 */
 let teachersSchema = new Schema({
-  /**news表规则 */
+  /**teachers表规则 */
   teachername: {type:String, require:true},
   teachersex: {type:String, require:true},
   teacherdesc: {type:String, require:true},

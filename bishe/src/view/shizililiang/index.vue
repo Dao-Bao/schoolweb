@@ -1,25 +1,24 @@
 <template>
-        <el-container>
-            <top></top><br>
+		<el-container>
+			<top></top><br>
 
-            <el-main>
-                <div v-for="(item,index) in teacher" :key="index" class="teacher">
-                    <div class="teacher_f">
-                        
-                        <div class="jianjie">
-                            <img :src="item.teacherheadersrc">
-                            <div>{{item.teachername}}</div>
-                            <span>{{item.teachersex}}</span>
-                            <div>{{item.teacherdesc}}</div>
-                        </div>
-                    </div>
-                </div>
-            </el-main><br>
+			<el-main>
+				<div v-for="(item,index) in teacher" :key="index" class="teacher">
+					<div class="teacher_f">
+						<div class="jianjie">
+								<img :src="item.teacherheadersrc">
+								<div>{{item.teachername}}</div>
+								<span>{{item.teachersex}}</span>
+								<div>{{item.teacherdesc}}</div>
+						</div>
+					</div>
+				</div>
+			</el-main><br>
 
-            <el-footer>
-                <bottom></bottom>
-            </el-footer>
-        </el-container>
+			<el-footer>
+					<bottom></bottom>
+			</el-footer>
+		</el-container>
 </template>
 
 <script>

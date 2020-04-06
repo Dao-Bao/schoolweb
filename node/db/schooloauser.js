@@ -25,9 +25,10 @@ let Schema = mongoose.Schema;
 
 /**表规则 */
 let userSchema = new Schema({
-  /**news表规则 */
+  /**schooloauser表规则 */
   username: {type:Number, require:true},
-  userpassword: {type:String, require:true}
+  userpassword: {type:String, require:true},
+  useridentity: {type: String}
 });
 
 /**建表 */

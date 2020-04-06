@@ -12,7 +12,7 @@ const cors = require("cors");
 let app = express();   
 
 const server = http.createServer((req, res) => {
-  console.log("服务器接收到了请求" + req.url);
+  // console.log("服务器接收到了请求" + req.url);
 
   /**添加响应头 */
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,12 +31,12 @@ const server = http.createServer((req, res) => {
 });
 
 
-app.listen(8990, () => { console.log("服务器启动...") });  /**监听6666端口 */
+app.listen(8990, () => { console.log("服务器启动...") });  /**监听8990端口 */
 
 /**中间件 */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname,"./static")));
+// app.use(express.static(path.join(__dirname,"./static")));
 app.use(cors()); /**解决跨域 */
 //session中间件
 // app.use(session({
@@ -58,16 +58,18 @@ app.post("/uploadteachersheader", require("./router/api/add/uploadteachersheader
 app.post("/addregulations", require("./router/api/add/addregulations")); /**上传通知接口 */
 app.post("/addschoolculture", require("./router/api/add/addschoolculture"));/**上传校园文化接口 */
 app.post("/adduser", require("./router/api/add/adduser"));/**新增校园oa用户 */
-app.post("/login", require('./router/api/add/login')); /** 登陆验证 */
+app.post("/login", require('./router/api/find/login')); /** 登陆验证 */
 app.post("/upload", require('./router/api/add/upload'));  /**上传接口 */
 
 app.get("/findnews", require('./router/api/find/findnews')); /** 发送学院新闻接口 */
 app.get("/findregulations", require('./router/api/find/findregulations')); /** 发送学院通知接口 */
 app.get("/findschoolculture", require('./router/api/find/findschoolculture')); /** 发送学院文化接口 */
 app.get("/findteachers", require('./router/api/find/findteachers')); /** 师资力量发送接口 */
+app.get("/findusers", require('./router/api/find/findusers')); /** 查找OA用户 */
 
 app.get("/removenews", require('./router/api/remove/removenews')); /**删除news接口 */
 app.get("/removeregulations", require('./router/api/remove/removeregulations')); /**删除regulations接口 */
 app.get("/removecultures", require('./router/api/remove/removecultures')); /**删除cultures接口 */
 // app.get("/removeteachers", require('./router/api/removeteachers')); /**删除teachers接口 */
+app.get("/removeusers", require('./router/api/remove/removeusers')); /** 删除OA用户 */
 

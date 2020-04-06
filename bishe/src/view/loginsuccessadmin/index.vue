@@ -15,8 +15,26 @@
             </el-menu-item-group>
           </el-submenu>
           <el-menu-item-group>
-            <el-menu-item  index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
+            <el-menu-item  index="2" @click="dialogTableVisible=true"><i class="el-icon-menu"></i>用户管理</el-menu-item>
           </el-menu-item-group>
+
+          <el-dialog title="用户管理" :visible.sync="dialogTableVisible">
+            <el-button @click="addusers" type="success" round>新增用户</el-button>
+            <el-table :data="users">
+              <el-table-column v-for="(item,index) of oaUsers" :key="index" :property="item.prop" :label="item.label" width="150"></el-table-column>
+              <!-- <el-table-column fixed="right" label="操作" width="100">
+                <template>
+                  <el-button @click="updateusers" type="text" size="small">修改</el-button>
+                  <el-button @click="removeusers" type="text" size="small">删除</el-button>
+                </template>
+              </el-table-column> -->
+              <el-table-column fixed="right" label="操作" width="100">
+                <template>
+                  <el-button @click="removeusers" type="text" size="small">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-dialog>
         </el-menu>
       </el-aside>
   
@@ -62,7 +80,7 @@
 <script>
 import top from "@/components/top"
 import bottom from "@/components/bottom"
-import { loginSuccess,newsTableData,regulationsTableData,culturesTableData } from "@/config/config.js"
+import { loginSuccess,newsTableData,regulationsTableData,culturesTableData,oaUsers } from "@/config/config.js"
 export default {
   data() {
       return {
@@ -70,9 +88,12 @@ export default {
         newsTableData: [],
         regulationsTableData: [],
         culturesTableData: [],
+        oaUsers: [],
         news: [],
         regulations: [],
-        cultures: []
+        cultures: [],
+        users: [],
+        dialogTableVisible: false,
       }
     },
   components: {
@@ -119,16 +140,33 @@ export default {
       removecultures() {
         this.$axios.get("http://127.0.0.1:8990/removecultures")
         .then( alert("删除成功") )
+      },
+      addusers() {
+        this.$router.push({path: "/addusers"});
+      },
+      getUsers() {
+				this.$axios.get("http://127.0.0.1:8990/findusers", {
+				})
+				.then(this.getFindUsersSucc)
+			},
+			getFindUsersSucc (res) {
+				this.users = res.data;
+      },
+      removeusers () {
+        this.$axios.get("http://127.0.0.1:8990/removeusers")
+        .then( alert("删除成功") )
       }
   },
   mounted() {
     this.getNews(),
     this.getFindRegulations(),
     this.getSchoolCulture(),
+    this.getUsers(),
     this.loginSuccess = loginSuccess,
     this.newsTableData = newsTableData,
     this.regulationsTableData = regulationsTableData,
-    this.culturesTableData = culturesTableData
+    this.culturesTableData = culturesTableData,
+    this.oaUsers = oaUsers
   }
 }
 </script>

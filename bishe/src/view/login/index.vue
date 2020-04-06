@@ -52,11 +52,13 @@ export default {
 				}
 			}).then((res) => {
 				if(res.data.code == '0') {
-					this.$router.push({path: "/loginsuccess"});
+					this.$router.push({path: "/loginsuccessadmin"});
 				} else if (res.data.code == '1') {
-					alert("账号未注册，请联系管理员注册");
+					this.$router.push({path: "/loginsuccessuser"});
 				} else if (res.data.code  == '2') {
 					alert("密码错误");
+				} else {
+					alert("账号未注册，请联系管理员注册");
 				}
 				// console.log(res.data);
 			}).catch((err) => {
