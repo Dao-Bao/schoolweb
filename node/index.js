@@ -5,14 +5,9 @@ const path = require("path");
 const http = require("http");/**引入http模块 */
 const cors = require("cors");
 
-// const router = express.Router();
-// const upload = require("./db/upload");
-
-
 let app = express();   
 
 const server = http.createServer((req, res) => {
-  // console.log("服务器接收到了请求" + req.url);
 
   /**添加响应头 */
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -60,12 +55,14 @@ app.post("/addschoolculture", require("./router/api/add/addschoolculture"));/**�
 app.post("/adduser", require("./router/api/add/adduser"));/**新增校园oa用户 */
 app.post("/login", require('./router/api/find/login')); /** 登陆验证 */
 app.post("/upload", require('./router/api/add/upload'));  /**上传接口 */
+app.post("/addlianxibiao", require('./router/api/add/addlianxibiao')); /** 增加联系表方式 */
 
 app.get("/findnews", require('./router/api/find/findnews')); /** 发送学院新闻接口 */
 app.get("/findregulations", require('./router/api/find/findregulations')); /** 发送学院通知接口 */
 app.get("/findschoolculture", require('./router/api/find/findschoolculture')); /** 发送学院文化接口 */
 app.get("/findteachers", require('./router/api/find/findteachers')); /** 师资力量发送接口 */
 app.get("/findusers", require('./router/api/find/findusers')); /** 查找OA用户 */
+app.get("/findlianxibiao", require('./router/api/find/findlianxibiao')); /** 查找联系方式 */
 
 app.get("/removenews", require('./router/api/remove/removenews')); /**删除news接口 */
 app.get("/removeregulations", require('./router/api/remove/removeregulations')); /**删除regulations接口 */

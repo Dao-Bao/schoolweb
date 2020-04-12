@@ -16,6 +16,7 @@ import AddSchoolculture from '@/view/addschoolculture/index'
 // import AddSchoolculture from '@/view/addschoolculture/upload'
 import AddTeachers from '@/view/addteachers/index'
 import AddUser from '@/view/addusers/index'
+import AddLianxibiao from '@/view/addlianxibiao'
 // import UploadHeader from '@/view/addteachers/components/uploadheader'
 import test from '@/view/test'
 
@@ -87,6 +88,10 @@ export default new Router({
             path: '/addusers',
             name: 'AddUser',
             component: AddUser
+        }, {
+            path: '/addlianxibiao',
+            name: 'AddLianxibiao',
+            component: AddLianxibiao
         }, {
             path: '/test/:id',
             name: 'test',

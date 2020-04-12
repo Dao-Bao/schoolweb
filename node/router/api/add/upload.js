@@ -64,29 +64,6 @@ module.exports = (req, res) => {
         });
       })
 
-    // // 一切都好
-    // regulations
-    //   .create({
-    //     // regulationsname: req.file.filename,
-    //     // regulationsUrl: req.file.path
-    //   })
-    //   .then( () => {
-    //     console.log(req.file);
-    //       res.send({
-    //         code: 0,
-    //         message: "提交成功"
-    //       });
-    //     }
-    //   )
-    //   .catch(
-    //     (e) => {
-    //       console.log(e);
-    //       res.send({
-    //         code: 1,
-    //         message: "提交失败"
-    //       });
-    //     })
-
     // console.log(req.file.filename);  //文件名
     // console.log(req.file.path);      //文件存放路径
     // res.send({"code": "0"});

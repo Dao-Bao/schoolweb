@@ -58,7 +58,7 @@ export const newsTableData = [
   {
     prop: "newstitle",
     label: "新闻标题",
-    width: "160"
+    width: "200"
   }, {
     prop: "newsimgsrc",
     label: "图片地址",
@@ -66,29 +66,29 @@ export const newsTableData = [
   }, {
     prop: "newsurl",
     label: "新闻链接",
-    width: "280"
+    width: "300"
   }
 ]
 export const regulationsTableData = [
   {
     prop: "regulationsname",
     label: "文件名",
-    width: "200"
+    width: "300"
   }, {
     prop: "regulationsUrl",
     label: "文件储存地址",
-    width: "430"
+    width: "450"
   }
 ]
 export const culturesTableData = [
   {
     prop: "schoolcultureimgsrc",
     label: "学院文化图片地址",
-    width: "430"
+    width: "450"
   }, {
     prop: "schoolculturedesc",
     label: "学院文化描述",
-    width: "200"
+    width: "300"
   }
 ]
 export const oaUsers = [
