@@ -36,6 +36,7 @@ import axios from "axios"
 import top from "@/components/top"
 import bottom from "@/components/bottom"
 export default {
+	inject: ["reload"],
   data() {
     return {
       form: {
@@ -66,7 +67,8 @@ export default {
 			}).then((res) => {
 				if(res.data.code == "0") {
 					// res.send("提交成功");
-					alert("提交成功")
+					alert("提交成功");
+					this.reload();
         }
 			}).catch((err) => {
 				console.log(err);

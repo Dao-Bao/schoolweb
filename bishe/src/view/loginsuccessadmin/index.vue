@@ -23,10 +23,9 @@
           <el-dialog title="用户管理" :visible.sync="dialogTableVisible">
             <el-button @click="addusers" type="success" round>新增用户</el-button>
             <el-table :data="users">
-              <el-table-column v-for="(item,index) of oaUsers" :key="index" :property="item.prop" :label="item.label" width="150"></el-table-column>
-              <el-table-column fixed="right" label="操作" width="100">
+              <el-table-column v-for="(item,index) of oaUsers" :key="index" :property="item.prop" :label="item.label" :width="item.width"></el-table-column>
+              <el-table-column fixed="right" label="操作" width="150">
                 <template>
-                  <!-- <el-button @click="updateusers" type="text" size="small">修改</el-button> -->
                   <el-button @click="removeusers" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
@@ -40,17 +39,17 @@
           <el-dialog title="联系表管理" :visible.sync="dialogFormVisible">
             <el-button @click="addlianxibiao" type="success" round>新增联系部门</el-button>
             <el-table :data="lianxibiao">
-              <el-table-column prop="bumen" label="部门" width="180"></el-table-column>
-              <el-table-column prop="phone" label="电话" width="180"></el-table-column>
-              <el-table-column fixed="right" label="操作" width="100">
+              <el-table-column prop="bumen" label="部门" width="200"></el-table-column>
+              <el-table-column prop="phone" label="电话" width="200"></el-table-column>
+              <el-table-column fixed="right" label="操作" width="150">
                 <template>
-                  <el-button @click="removeusers" type="text" size="small">删除</el-button>
+                  <el-button @click="removelianxibiao" type="text" size="small">删除</el-button>
                 </template>
               </el-table-column>
             </el-table>
             <div slot="footer" class="dialog-footer">
               <el-button @click="dialogFormVisible = false">取 消</el-button>
-              <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+              <!-- <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button> -->
             </div>
           </el-dialog>
 
@@ -101,6 +100,7 @@ import top from "@/components/top"
 import bottom from "@/components/bottom"
 import { loginSuccess,newsTableData,regulationsTableData,culturesTableData,oaUsers } from "@/config/config.js"
 export default {
+  inject: ["reload"],
   data() {
       return {
         loginSuccess: [],
@@ -150,16 +150,15 @@ export default {
       },
       removenews() {
         this.$axios.get("http://127.0.0.1:8990/removenews")
-        .then( alert("删除成功") )
+        .then( alert("删除成功"),this.reload() )
       },
       removeregulations() {
         this.$axios.get("http://127.0.0.1:8990/removeregulations")
-        .then( alert("删除成功" )
-        )
+        .then( alert("删除成功" ),this.reload() )
       },
       removecultures() {
         this.$axios.get("http://127.0.0.1:8990/removecultures")
-        .then( alert("删除成功") )
+        .then( alert("删除成功"),this.reload() )
       },
       addusers() {
         this.$router.push({path: "/addusers"});
@@ -174,7 +173,7 @@ export default {
       },
       removeusers () {
         this.$axios.get("http://127.0.0.1:8990/removeusers")
-        .then( alert("删除成功") )
+        .then( alert("删除成功"),this.reload() )
       },
       addlianxibiao() {
         this.$router.push({path: "/addlianxibiao"});
@@ -185,6 +184,10 @@ export default {
       },
       getLianxibiaoSucc(res) {
         this.lianxibiao = res.data;
+      },
+      removelianxibiao() {
+        this.$axios.get("http://127.0.0.1:8990/removelianxibiao")
+        .then( alert("删除成功"),this.reload() )
       }
   },
   mounted() {

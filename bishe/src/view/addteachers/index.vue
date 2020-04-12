@@ -52,6 +52,7 @@ import top from "@/components/top"
 import bottom from "@/components/bottom"
 import uploadHeader from "./components/uploadheader" 
 export default {
+	inject: ["reload"],
   data() {
     return {
       form: {
@@ -111,6 +112,7 @@ export default {
 				if(res.data.code == "0") {
 					// res.send("提交成功");
 					alert("提交成功");
+					this.reload();
         }
 			}).catch((err) => {
 				console.log(err);

@@ -16,6 +16,7 @@
 import top from "@/components/top"
 import bottom from "@/components/bottom"
 export default {
+  inject: ["reload"],
   data () {
     return {
     }
@@ -37,6 +38,7 @@ export default {
           if(res.code == "0") {
             alert("上传成功");
             console.log(res.message);
+            this.reload()
           } else if(res.code == "1") {
             alert("上传失败");
             console.log(res.msg);
