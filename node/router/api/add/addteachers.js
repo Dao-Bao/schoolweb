@@ -2,13 +2,15 @@ const teachers = require("../../../db/teachers");
 
 module.exports = (req, res) => {
 
+  let data = req.body;
+
   /**增加数据 */
   teachers
   .create({
-    teachername: req.teachername,
-    teachersex: req.teachersex,
-    teacherdesc: req.teacherdesc,
-    teacherheadersrc: req.teacherheadersrc
+    teachername: data.teachername,
+    teachersex: data.teachersex,
+    teacherdesc: data.teacherdesc,
+    teacherheadersrc: data.teacherheadersrc
   })
   .then(
     (data) => {

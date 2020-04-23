@@ -24,27 +24,6 @@ let Schema = mongoose.Schema;
 /**表规则 */
 let lxbSchema = new Schema({
   /**news表规则 */
-  // xybgs: {type:String, require:true},
-  // jwc: {type:String, require:true},
-  // rsc: {type:String, require:true},
-  // xcb: {type:String, require:true},
-  // bwc: {type:String, require:true},
-  // xsgzbgs: {type:String, require:true},
-  // tw: {type:String, require:true},
-  // xlzxzx: {type:String, require:true},
-  // zbjycjy: {type:String, require:true},
-  // zbjyczs: {type:String, require:true},
-  // gjjlc: {type:String, require:true},
-  // kyc: {type:String, require:true},
-  // cwc: {type:String, require:true},
-  // jjcyc: {type:String, require:true},
-  // hqc: {type:String, require:true},
-  // zcglzx: {type:String, require:true},
-  // jcb: {type:String, require:true},
-  // tyb: {type:String, require:true},
-  // szb: {type:String, require:true},
-  // tsg: {type:String, require:true},
-  // xxgcxy: {type:String, require:true}
   bumen: {type:String, require:true},
   phone: {type:String, require:true}
 });

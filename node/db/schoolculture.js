@@ -28,8 +28,7 @@ let schoolcultureSchema = new Schema({
   /**schoolculture表规则 */
   schoolcultureimgsrc: {type:String, require:true},
   schoolculturedesc: {type:String, require:true},
-  // fieldSingleFile: {type:String, require:true},
-  // fieldArrayFile: {type:String, require:true},
+
 });
 
 /**建表 */

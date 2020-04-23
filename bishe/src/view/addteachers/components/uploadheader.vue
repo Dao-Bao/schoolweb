@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <el-upload class="avatar-uploader" :on-change="getFile" action>
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
-    <div class="tips">
-      <span class="el-icon-upload2"></span>点击更换头像
-      <span class="el-icon-upload2"></span>
-    </div>
-  </div>
+    <el-upload
+						class="upload-demo"
+						drag
+						multiple
+						:on-change="getFile"
+						action
+						>
+						<img v-if="imageUrl" :src="imageUrl" class="avatar" />
+						<i class="el-icon-upload"></i>
+						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+						<div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
+					</el-upload>
 </template>
 <script>
 export default {

@@ -6,10 +6,10 @@
 				<div v-for="(item,index) in teacher" :key="index" class="teacher">
 					<div class="teacher_f">
 						<div class="jianjie">
-								<img :src="item.teacherheadersrc">
+								<img class="teacherheader" :src="item.teacherheadersrc">
 								<div>{{item.teachername}}</div>
 								<span>{{item.teachersex}}</span>
-								<div>{{item.teacherdesc}}</div>
+								<div class="desc">{{item.teacherdesc}}</div>
 						</div>
 					</div>
 				</div>
@@ -76,5 +76,12 @@ export default {
 }
 .jianjie {
     display: inline-block;
+}
+.teacherheader {
+    width: 200px;
+    height: 230px;
+}
+.desc {
+    width: 200px;
 }
 </style>

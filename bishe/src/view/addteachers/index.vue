@@ -20,19 +20,20 @@
 
 
 				<el-form-item label="教师照片">
-					<div>
-						<el-upload class="avatar-uploader" :on-change="getFile" action>
-							<img v-if="imageUrl" :src="teacherheadersrc" class="avatar" />
-							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
-						</el-upload>
-						<div class="tips">
-							<span class="el-icon-upload2"></span>点击更换头像
-							<span class="el-icon-upload2"></span>
-						</div>
-							{{imageUrl}}
-							{{teacherheadersrc}}
-					</div>
-						<!-- <upload-header></upload-header> -->
+					<el-upload
+						class="upload-demo"
+						drag
+						multiple
+						:on-change="getFile"
+						action
+						v-model="form.teacherheadersrc"
+						>
+						<img v-if="imageUrl" :src="imageUrl" class="avatar" />
+						<i class="el-icon-upload"></i>
+						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+						<div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
+					</el-upload>
+					<!-- <upload-header></upload-header> -->
 				</el-form-item>
 
 				<el-form-item>
@@ -50,7 +51,7 @@
 import axios from "axios"
 import top from "@/components/top"
 import bottom from "@/components/bottom"
-import uploadHeader from "./components/uploadheader" 
+// import uploadHeader from "./components/uploadheader" 
 export default {
 	inject: ["reload"],
   data() {
@@ -67,37 +68,38 @@ export default {
   components: {
 		top,
 		bottom,
-		uploadHeader
+		// uploadHeader
   },
   methods: {
 		goBack() {
 			this.$router.push({path: "/loginsuccess"});
 		},
 		getFile (file, fileList) {
-      // console.log(file);
       this.getBase64(file.raw).then(res => {
-        // this.base64ToFile(res);
-        this.form.teacherheadersrc = res;
-        console.log(res);
+				this.$emit('getImgBase', res);
+				this.imageUrl = res;
+				// console.log(this.imageUrl,'111')
       })
     },
     getBase64 (file) {
       return new Promise(function (resolve, reject) {
-        let reader = new FileReader();
-        let imgResult = '';
-        reader.readAsDataURL(file);
+        let reader = new FileReader()
+        let imgResult = ''
+        reader.readAsDataURL(file)
         reader.onload = function () {
-          imgResult = reader.result;
+          imgResult = reader.result
         }
         reader.onerror = function (error) {
-          reject(error);
+          reject(error)
         }
         reader.onloadend = function () {
-          resolve(imgResult);
+          resolve(imgResult)
         }
-      })
-    },
+			})
+		},
 		onSubmit() {
+			// console.log(this.imageUrl,'333');
+
 			this.$axios({
 				method: "post",
 				url: "http://127.0.0.1:8990/addteachers",
@@ -106,12 +108,13 @@ export default {
 					teachername: this.form.teachername,
           teachersex: this.form.teachersex,
 					teacherdesc: this.form.teacherdesc,
-					teacherheadersrc: this.form.teacherheadersrc
+					teacherheadersrc: this.imageUrl
 				}
 			}).then((res) => {
 				if(res.data.code == "0") {
 					// res.send("提交成功");
 					alert("提交成功");
+					console.log(this.imageUrl);
 					this.reload();
         }
 			}).catch((err) => {
@@ -119,39 +122,11 @@ export default {
 			});
 		}
 	},
-	// mounted() {
-  //   layui.use('upload', function(){
-  //     var $ = layui.jquery,
-	// 		upload = layui.upload;
-      
-  //     //执行实例
-	// 		var uploadInst = upload.render({
-	// 				elem: '#test1',
-	// 				url: 'http://127.0.0.1:8990/addteachers', //改成您自己的上传接口
-	// 				before: function(obj){
-	// 					//预读本地文件示例，不支持ie8
-	// 					obj.preview(function(index, file, result){
-	// 						$('#demo1').attr('src', result); //图片链接（base64）
-	// 					});
-	// 				},
-	// 				done: function(res){
-	// 					//如果上传失败
-	// 					if(res.code > 0){
-	// 						return layer.msg('上传失败');
-	// 					}
-	// 					//上传成功
-	// 				},
-	// 				error: function(){
-	// 					//演示失败状态，并实现重传
-	// 					var demoText = $('#demoText');
-	// 					demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-	// 					demoText.find('.demo-reload').on('click', function(){
-	// 						uploadInst.upload();
-	// 					});
-	// 				}
-	// 			});
-  //   })
-  // }
+	watch: {
+		imageUrl:function(newVal){
+			console.log(newVal,'222')
+		}
+	}
 }
 </script>
 
