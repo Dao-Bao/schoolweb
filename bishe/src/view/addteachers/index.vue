@@ -33,7 +33,6 @@
 						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
 						<div class="el-upload__tip" slot="tip">只能上传jpg/png文件</div>
 					</el-upload>
-					<!-- <upload-header></upload-header> -->
 				</el-form-item>
 
 				<el-form-item>
@@ -51,7 +50,6 @@
 import axios from "axios"
 import top from "@/components/top"
 import bottom from "@/components/bottom"
-// import uploadHeader from "./components/uploadheader" 
 export default {
 	inject: ["reload"],
   data() {

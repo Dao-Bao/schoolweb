@@ -33,17 +33,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname,"./static")));
 app.use(cors()); /**解决跨域 */
-//session中间件
-// app.use(session({
-//   secret:"bs", //密匙可以设置任何字符串
-//   cookie:{maxAge:24*60*60*1000},//设置cookie的过期时间ms
-//   rolling: true,//是否每次请求，都重新刷新存储时间
-//   resave: false,//重新存储session
-//   saveUninitialized: false,//初始值
-  // store: new mongoSession({
-  //     url:"mongodb://localhost:27017/school"
-  // }),//不设置
-// }));
 
 
 /**路由监听 */
@@ -69,4 +58,4 @@ app.get("/removeregulations", require('./router/api/remove/removeregulations'));
 app.get("/removecultures", require('./router/api/remove/removecultures')); /**删除cultures接口 */
 // app.get("/removeteachers", require('./router/api/removeteachers')); /**删除teachers接口 */
 app.get("/removeusers", require('./router/api/remove/removeusers')); /** 删除OA用户 */
-
+app.use("/download/?", require('./router/api/find/download'));/**下载 */

@@ -27,8 +27,8 @@ let Schema = mongoose.Schema;
 let regulationsSchema = new Schema({
   /**regulations表规则 */
   regulationsname: {type:String, require:true},
-  // base64: {type:String, require:true}
-  regulationsUrl: {type:String, require: true}
+  // regulationsUrl: {type:String, require: true}
+  regulationsUrl: {type:String}
 });
 
 /**建表 */

@@ -3,7 +3,7 @@
 				<top></top>
 				<el-main>
 					<el-menu class="el-menu-demo" mode="horizontal">
-							<el-menu-item v-for="item of menuConfig"  class="first" :key="item.id">
+							<el-menu-item v-for="(item,index) of menuConfig"  class="first" :key="index">
 								<router-link :to="item.url">{{item.title}}</router-link>
 							</el-menu-item>
 					</el-menu>
@@ -46,7 +46,7 @@
 								<div class="xueyuanxinwen">
 									<div class="block">
 										<el-carousel height="230px">
-											<el-carousel-item v-for="item in pic" :key="item.id">
+											<el-carousel-item v-for="(item,index) in pic" :key="index">
 												<span class="picdesc">{{item.newstitle}}</span>
 												<img class="lunbopic" :src="item.newsimgsrc" @click="jump(item)">
 											</el-carousel-item>
@@ -56,8 +56,11 @@
 									<div class="neirongright">
 										<vue-seamless-scroll :data="wenzhang" class="seamless-warp">
 											<ul class="item">
-												<li v-for="item in wenzhang" :key="item.id" @click="test(item)">
-													<span class="wenzhangtitle" >{{item.regulationsname}}</span>
+													<li v-for="(item,index) in wenzhang" :key="index" >
+													<!-- <a download href="http://127.0.0.1:8990/download"> -->
+													<a href="http://127.0.0.1:8990/download/?data=" @click="download(item.regulationsname,item.regulationsUrl)">
+														<span class="wenzhangtitle">{{item.regulationsname}}</span>
+													</a>
 												</li>
 											</ul>
 										</vue-seamless-scroll>
@@ -70,7 +73,7 @@
 
 									<div class="xyblock">
 										<el-carousel height="230px">
-											<el-carousel-item v-for="item in xyxw" :key="item.id" >
+											<el-carousel-item v-for="(item,index) in xyxw" :key="index" >
 												<div>
 														<img class="xypic" :src="item.schoolcultureimgsrc" >
 												</div>
@@ -105,20 +108,20 @@ export default {
 				aMenuConfig: [],
 				rMenuConfig: [],
         pic: [{
-            "id": "",
-            "newsimgsrc": "",
-            "newstitle": "",
-            "newsurl": ""
+            id: "",
+            newsimgsrc: "",
+            newstitle: "",
+            newsurl: ""
         }],
         wenzhang: [{
-            "id": "",
-            "regulationsname": "",
-            "regulationsUrl": ""
+            id: "",
+            regulationsname: "",
+            regulationsUrl: ""
         }],
         xyxw: [{
-            "id": "",
-            "schoolcultureimgsrc": "",
-            "schoolculturedesc": ""
+            id: "",
+            schoolcultureimgsrc: "",
+            schoolculturedesc: ""
         }]
 			}
 		},
@@ -146,7 +149,6 @@ export default {
 			getFindRegulationsSucc (res) {
 				// console.log(res.data);
 				this.wenzhang = res.data;
-				// console.log(this.wenzhang);
 			},
 			getSchoolCulture() {
 				this.$axios.get("http://127.0.0.1:8990/findschoolculture")
@@ -155,7 +157,25 @@ export default {
 			getSchoolCultureSucc (res) {
 				// console.log(res.data);
 				this.xyxw = res.data;
-			}
+			},
+			download(regulationsname,regulationsUrl) {
+				this.$axios({
+					method: "post",
+					url: "http://127.0.0.1:8990/download/?",
+					dataType: 'JSONP',
+					data : {
+						regulationsname,
+						regulationsUrl
+					}
+				}).then(() => {
+						console.log(regulationsname);
+						// console.log(regulationsUrl);
+					}
+				)
+				.catch((e) => {
+					console.log(e)
+				})
+			},
 		},
 		mounted() {
 			this.menuConfig = menuConfig,
